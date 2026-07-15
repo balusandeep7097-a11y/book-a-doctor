@@ -25,7 +25,7 @@ const specialties = [
 
 const DoctorSearch = () => {
   const [searchParams] = useSearchParams();
-  const { token, user } = useAuth();
+  const { token, user, API_URL } = useAuth();
   const navigate = useNavigate();
 
   const [doctors, setDoctors] = useState([]);
@@ -64,7 +64,7 @@ const DoctorSearch = () => {
   const fetchDoctors = async () => {
     setLoading(true);
     try {
-      let url = 'http://localhost:5000/api/doctors?status=approved';
+      let url = `${API_URL}/doctors?status=approved`;
       if (selectedSpecialties.length > 0) {
         url += `&specialty=${encodeURIComponent(selectedSpecialties.join(','))}`;
       }
@@ -128,7 +128,7 @@ const DoctorSearch = () => {
     setBookingMessage({ type: '', text: '' });
 
     try {
-      const response = await fetch('http://localhost:5000/api/appointments', {
+      const response = await fetch(`${API_URL}/appointments`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

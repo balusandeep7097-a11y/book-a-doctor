@@ -6,14 +6,14 @@ import { Search, Calendar, Heart, Shield, Award, MapPin } from 'lucide-react';
 const Home = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [doctors, setDoctors] = useState([]);
-  const { theme } = useAuth();
+  const { theme, API_URL } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
     // Fetch all approved doctors
     const fetchDoctors = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/doctors?status=approved');
+        const response = await fetch(`${API_URL}/doctors?status=approved`);
         const data = await response.json();
         if (data.success) {
           setDoctors(data.data);
