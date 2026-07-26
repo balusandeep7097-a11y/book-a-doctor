@@ -13,10 +13,10 @@ const newDoctorsData = [
     role: 'doctor',
     avatar: '/assets/images/doctor_avatar_1.jpg',
     doctorDetails: {
-      specialty: 'Neurologist',
-      experience: 12,
-      fee: 800,
-      bio: 'Senior Neurologist with over 12 years of clinical excellence in diagnosing and treating complex neurological disorders.',
+      specialty: 'Dermatologist',
+      experience: 10,
+      fee: 700,
+      bio: 'Expert Dermatologist specializing in skincare treatments, acne therapy, laser procedures, and clinical dermatology.',
       clinicAddress: 'Care Hospitals, Banjara Hills, Hyderabad',
       rating: 4.9,
       reviewsCount: 38,
@@ -36,10 +36,10 @@ const newDoctorsData = [
     role: 'doctor',
     avatar: '/assets/images/doctor_avatar_2.jpg',
     doctorDetails: {
-      specialty: 'Dermatologist',
-      experience: 9,
-      fee: 650,
-      bio: 'Consultant Dermatologist specializing in aesthetic dermatology, skin laser treatments, and advanced clinical care.',
+      specialty: 'Dentist',
+      experience: 8,
+      fee: 500,
+      bio: 'Skilled Dentist offering cosmetic dentistry, root canal treatments, teeth whitening, and general dental surgery.',
       clinicAddress: 'KIMS Hospitals, Gachibowli, Hyderabad',
       rating: 4.8,
       reviewsCount: 29,
@@ -61,7 +61,7 @@ const newDoctorsData = [
       specialty: 'Cardiologist',
       experience: 14,
       fee: 1000,
-      bio: 'Lead Cardiologist dedicated to non-invasive cardiology, preventive heart care, and cardiac rehabilitation.',
+      bio: 'Lead Cardiologist dedicated to non-invasive cardiology, preventive heart care, and cardiac health management.',
       clinicAddress: 'Yashoda Hospitals, Hitec City, Hyderabad',
       rating: 5.0,
       reviewsCount: 52,
@@ -86,7 +86,7 @@ const seedNewDoctors = async () => {
       let userId;
 
       if (existingUser) {
-        console.log(`User ${docData.email} already exists. Updating doctor details...`);
+        console.log(`Updating User: ${docData.name} (${docData.email})`);
         userId = existingUser._id;
         existingUser.name = docData.name;
         existingUser.avatar = docData.avatar;
@@ -107,17 +107,17 @@ const seedNewDoctors = async () => {
       if (existingDoctor) {
         Object.assign(existingDoctor, docData.doctorDetails);
         await existingDoctor.save();
-        console.log(`Updated Doctor Profile for ${docData.name}`);
+        console.log(`Updated Doctor Profile for ${docData.name} (${docData.doctorDetails.specialty})`);
       } else {
         await Doctor.create({
           user: userId,
           ...docData.doctorDetails
         });
-        console.log(`Created Doctor Profile for ${docData.name}`);
+        console.log(`Created Doctor Profile for ${docData.name} (${docData.doctorDetails.specialty})`);
       }
     }
 
-    console.log('Successfully added all 3 new doctors!');
+    console.log('Successfully updated all 3 doctors with exact specialties!');
     process.exit(0);
   } catch (error) {
     console.error('Error adding new doctors:', error);
