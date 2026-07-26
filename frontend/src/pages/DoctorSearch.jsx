@@ -59,7 +59,7 @@ const DoctorSearch = () => {
 
   useEffect(() => {
     fetchDoctors();
-  }, [selectedSpecialties, maxFee, selectedCity]); // Re-fetch on filter change
+  }, [selectedSpecialties, maxFee, selectedCity, search]); // Re-fetch on filter change
 
   const fetchDoctors = async () => {
     setLoading(true);
