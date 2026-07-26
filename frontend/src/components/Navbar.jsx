@@ -88,7 +88,7 @@ const Navbar = () => {
       <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', color: 'inherit' }}>
         <HeartPulse size={32} color="var(--primary-color)" />
         <span style={{ fontSize: '22px', fontWeight: '800', letterSpacing: '-0.5px' }}>
-          Book<span style={{ color: 'var(--primary-color)' }}>A</span>Doctor
+          Doc<span style={{ color: 'var(--primary-color)' }}>Spot</span>
         </span>
       </Link>
 
